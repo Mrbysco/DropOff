@@ -64,7 +64,7 @@ public class GuiEventHandler {
 		if (!canDisplay(event.getScreen()) || !(event.getScreen() instanceof InventoryScreen) || !Screen.hasControlDown()) return;
 		InventoryScreen containerScreen = (InventoryScreen) event.getScreen();
 
-		if (containerScreen.getSlotUnderMouse().hasItem())
+		if (containerScreen.getSlotUnderMouse() != null && containerScreen.getSlotUnderMouse().hasItem())
 		{
 			event.setCanceled(true);
 			PacketHandler.INSTANCE.sendToServer(new C2SFavoriteItemPacket(containerScreen.getSlotUnderMouse().index));
